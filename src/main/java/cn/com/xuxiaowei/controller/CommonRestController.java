@@ -1,10 +1,13 @@
 package cn.com.xuxiaowei.controller;
 
+import cn.com.xuxiaowei.util.RequestUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +17,7 @@ import java.util.Map;
  *
  * @author xuxiaowei
  */
+@Slf4j
 @RestController
 @RequestMapping("/common")
 public class CommonRestController {
@@ -27,6 +31,16 @@ public class CommonRestController {
      */
     @RequestMapping
     public Map<String, Object> common(HttpServletRequest request, HttpServletResponse response) {
+
+        log.info("请求参数：{}", RequestUtils.keyValue(request));
+
+        try {
+            log.info("请求流：{}", RequestUtils.getInputStream(request));
+        } catch (IOException e) {
+            log.error("获取请求流异常");
+            log.error(e.getMessage(), e);
+        }
+
         Map<String, Object> map = new HashMap<>(4);
         Map<String, Object> data = new HashMap<>(4);
         map.put("data", data);

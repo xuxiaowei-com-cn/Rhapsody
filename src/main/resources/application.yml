@@ -2,3 +2,9 @@
 # 服务器 配置
 server:
   port: 876
+#
+# 日志 配置
+logging:
+  level:
+    web: debug
+    cn.com.xuxiaowei: debug
