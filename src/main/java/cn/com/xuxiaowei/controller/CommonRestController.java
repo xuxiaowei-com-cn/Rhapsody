@@ -25,21 +25,21 @@ import static cn.com.xuxiaowei.util.Constants.*;
 public class CommonRestController {
 
     /**
-     * 公共 HTTP
+     * 公共 HTTP 1
      *
      * @param request  请求
      * @param response 响应
      * @return 返回 公共 HTTP 响应结果
      */
-    @RequestMapping
-    public Map<String, Object> common(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping("/1")
+    public Map<String, Object> common1(HttpServletRequest request, HttpServletResponse response) {
 
-        log.info("请求参数：{}", RequestUtils.keyValue(request));
+        log.info("请求参数 1：{}", RequestUtils.keyValue(request));
 
         try {
-            log.info("请求流：{}", RequestUtils.getInputStream(request));
+            log.info("请求流 1：{}", RequestUtils.getInputStream(request));
         } catch (IOException e) {
-            log.error("获取请求流异常");
+            log.error("获取请求流异常 1");
             log.error(e.getMessage(), e);
         }
 
@@ -47,10 +47,41 @@ public class CommonRestController {
         Map<String, Object> data = new HashMap<>(4);
         map.put(DATA, data);
 
-        data.put("now", LocalDateTime.now().toString());
+        data.put("now 1", LocalDateTime.now().toString());
 
         map.put(CODE, CODE_OK);
-        map.put(MSG, "请求成功");
+        map.put(MSG, "请求成功 1");
+
+        return map;
+    }
+
+    /**
+     * 公共 HTTP 1
+     *
+     * @param request  请求
+     * @param response 响应
+     * @return 返回 公共 HTTP 响应结果
+     */
+    @RequestMapping("/2")
+    public Map<String, Object> common2(HttpServletRequest request, HttpServletResponse response) {
+
+        log.info("请求参数 2：{}", RequestUtils.keyValue(request));
+
+        try {
+            log.info("请求流 2：{}", RequestUtils.getInputStream(request));
+        } catch (IOException e) {
+            log.error("获取请求流异常 2");
+            log.error(e.getMessage(), e);
+        }
+
+        Map<String, Object> map = new HashMap<>(4);
+        Map<String, Object> data = new HashMap<>(4);
+        map.put(DATA, data);
+
+        data.put("now 2", LocalDateTime.now().toString());
+
+        map.put(CODE, CODE_OK);
+        map.put(MSG, "请求成功 2");
 
         return map;
     }
