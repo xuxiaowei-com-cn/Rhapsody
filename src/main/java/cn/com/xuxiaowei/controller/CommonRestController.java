@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+import static cn.com.xuxiaowei.util.Constants.*;
+
 /**
  * 公共 HTTP RestController
  *
@@ -43,12 +45,12 @@ public class CommonRestController {
 
         Map<String, Object> map = new HashMap<>(4);
         Map<String, Object> data = new HashMap<>(4);
-        map.put("data", data);
+        map.put(DATA, data);
 
         data.put("now", LocalDateTime.now().toString());
 
-        map.put("CODE", 0);
-        map.put("msg", "请求成功");
+        map.put(CODE, CODE_OK);
+        map.put(MSG, "请求成功");
 
         return map;
     }
